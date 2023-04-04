@@ -15,6 +15,7 @@ class RegisterPageLocators:
     PASSWORD = (By.XPATH, '//input[@id="customer.password"]')
     CONFIRM_PASS = (By.XPATH, '//input[@id="repeatedPassword"]')
     REGISTER_BUTTON = (By.XPATH, '//input[@value="Register"]')
+    ERROR_MESSAGE = (By.XPATH, '//span[@id="customer.lastName.errors"]')
     HOME_TRANSITION = (By.XPATH, '//a[@text()="home"]')
     CUSTOMER_CARE_TRANSITION = (By.XPATH, '//a[text()="contact"]')
     
