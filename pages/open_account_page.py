@@ -51,3 +51,4 @@ class OpenAccountPage(BasePage):
         
     def proceed_to_log_out(self):
         self.click_element(OpenAccountLocators.LOG_OUT_TRANSITION)
+        
