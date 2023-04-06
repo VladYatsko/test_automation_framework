@@ -10,4 +10,6 @@ class CustomerCarePageLocators:
     SEND_MESSAGE_BUTTON = (By.XPATH, '//input[@value="Send to Customer Care"]')
     HOME_TRANSITION = (By.XPATH, '//a[@text()="home"]')
     REGISTER_TRANSITION = (By.XPATH, '//a[text()="Register"]')
+    ERROR_MESSAGE = (By.XPATH, '//span[@class="error"]')
+    SUCCESS_MESSAGE = (By.XPATH, '//p[text()="Thank you asd"]')
     

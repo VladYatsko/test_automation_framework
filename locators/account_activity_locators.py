@@ -10,7 +10,7 @@ class AccountActivityLocators:
     ACTIVITY_PERIOD = (By.XPATH, '//select[@id="month"]')
     TYPE = (By.XPATH, '//select[@id="transactionType"]')
     GO_BUTTON = (By.XPATH, '//input[@value="Go"]')
-    TRANSACTION = (By.CSS_SELECTOR, 'tr td:nth-child(2) > a')
+    TRANSACTION_ID = (By.CSS_SELECTOR, 'tr td:nth-child(2) > a')
     HOME_TRANSITION = (By.XPATH, '//a[@text()="home"]')
     CUSTOMER_CARE_TRANSITION = (By.XPATH, '//a[text()="contact"]')
     OPEN_ACCOUNT_TRANSITION = (By.XPATH, '//a[text()="Open New Account"]')
