@@ -1,5 +1,3 @@
-import time
-
 from locators.customer_care_locators import CustomerCarePageLocators
 from locators.home_locators import HomePageLocators
 from locators.open_account_locators import OpenAccountLocators
