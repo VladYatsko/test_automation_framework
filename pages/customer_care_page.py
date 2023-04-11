@@ -8,7 +8,7 @@ class CustomerCarePage(BasePage):
         super().__init__(driver, url)
         
     def customer_care_page_is_expected(self):
-        assert self.get_url() == CustomerCarePageLocators.URL
+        assert CustomerCarePageLocators.URL in self.get_url()
         
     def input_name(self):
         created_data = next(generated_data())

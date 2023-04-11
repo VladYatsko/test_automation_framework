@@ -1,3 +1,5 @@
+import time
+
 from locators.customer_care_locators import CustomerCarePageLocators
 from locators.home_locators import HomePageLocators
 from locators.open_account_locators import OpenAccountLocators
@@ -57,8 +59,10 @@ class TestHomePage:
         register_page.specify_zip_code()
         register_page.specify_phone_number()
         register_page.specify_ssn()
-        username = register_page.specify_user_name()
-        password = register_page.specify_password()
+        register_page.specify_user_name()
+        register_page.specify_password()
+        username = register_page.get_text(RegisterPageLocators.USERNAME)
+        password = register_page.get_text(RegisterPageLocators.PASSWORD)
         register_page.submit_register()
         open_account_page = OpenAccountPage(driver, OpenAccountLocators.URL)
         open_account_page.open_page()

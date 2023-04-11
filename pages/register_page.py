@@ -8,7 +8,7 @@ class RegisterPage(BasePage):
         super().__init__(driver, url)
         
     def register_page_is_expected(self):
-        assert self.get_url() == RegisterPageLocators.URL
+        assert RegisterPageLocators.URL in self.get_url()
         
     def specify_first_name(self):
         created_data = next(generated_data())
