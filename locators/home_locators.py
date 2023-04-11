@@ -6,6 +6,7 @@ class HomePageLocators:
     USER_NAME = (By.XPATH, '//input[@name="username"]')
     PASSWORD = (By.XPATH, '//input[@name="password"]')
     LOG_IN = (By.XPATH, '//input[@type="submit"]')
+    ERROR_MSG = (By.XPATH, '//p[@class="error"]')
     REGISTER_TRANSITION = (By.XPATH, '//a[text()="Register"]')
     CUSTOMER_CARE_TRANSITION = (By.XPATH, '//a[text()="contact"]')
     

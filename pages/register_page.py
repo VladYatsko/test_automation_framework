@@ -48,8 +48,9 @@ class RegisterPage(BasePage):
     
     def specify_password(self):
         created_data = next(generated_data())
-        self.send_text(RegisterPageLocators.PASSWORD, created_data.password)
+        original_password = self.send_text(RegisterPageLocators.PASSWORD, created_data.password)
         self.send_text(RegisterPageLocators.CONFIRM_PASS, created_data.password)
+        return original_password
     
     def submit_register(self):
         self.click_element(RegisterPageLocators.REGISTER_BUTTON)
