@@ -13,6 +13,7 @@ class FindTransactionLocators:
     RANGE_SEARCH_BTN = (By.XPATH, '//button[@ng-click="criteria.searchType = \'DATE_RANGE\'"]')
     AMOUNT = (By.XPATH, '//input[@id="criteria.amount"]')
     AMOUNT_SEARCH_BTN = (By.XPATH, '//button[@ng-click="criteria.searchType = \'AMOUNT\'"]')
+    IS_SUCCESSFUL = (By.XPATH, '//tbody')
     HOME_TRANSITION = (By.XPATH, '//a[@text()="home"]')
     CUSTOMER_CARE_TRANSITION = (By.XPATH, '//a[text()="contact"]')
     OPEN_ACCOUNT_TRANSITION = (By.XPATH, '//a[text()="Open New Account"]')
