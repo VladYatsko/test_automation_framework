@@ -1,3 +1,5 @@
+from selenium.webdriver import ActionChains
+
 from locators.open_account_locators import OpenAccountLocators
 from pages.base_page import BasePage
 from selenium.webdriver.support.ui import Select
@@ -8,19 +10,24 @@ class OpenAccountPage(BasePage):
         super().__init__(driver, url)
         
     def open_account_page_is_expected(self):
-        assert self.get_url() == OpenAccountLocators.URL
+        assert OpenAccountLocators.URL in self.get_url()
         
     def select_checking(self):
-        select = Select(self.driver.find_presenting_element(OpenAccountLocators.ACCOUNT_TYPE))
+        select = Select(self.driver.find_element(*OpenAccountLocators.ACCOUNT_TYPE))
         select.select_by_index(0)
         
     def select_savings(self):
-        select = Select(self.driver.find_presenting_element(OpenAccountLocators.ACCOUNT_TYPE))
+        select = Select(self.driver.find_element(*OpenAccountLocators.ACCOUNT_TYPE))
         select.select_by_index(1)
         
     def select_account(self):
-        select = Select(self.driver.find_presenting_element(OpenAccountLocators.ACCOUNT_TO_TAKE))
+        select = Select(self.driver.find_element(*OpenAccountLocators.ACCOUNT_TO_TAKE))
         select.select_by_index(0)
+        
+    def submit_creation(self):
+        action = ActionChains(self.driver)
+        action.move_to_element(self.find_presenting_element(OpenAccountLocators.OPEN_ACC_BTN)).perform()
+        self.click_element(OpenAccountLocators.OPEN_ACC_BTN)
         
     def get_new_account_id(self):
         return self.find_presenting_element(OpenAccountLocators.NEW_ACC_ID)

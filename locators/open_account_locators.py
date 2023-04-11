@@ -5,7 +5,7 @@ class OpenAccountLocators:
     URL = 'https://parabank.parasoft.com/parabank/openaccount.htm'
     ACCOUNT_TYPE = (By.XPATH, '//select[@id="type"]')
     ACCOUNT_TO_TAKE = (By.XPATH, '//select[@id="fromAccountId"]')
-    OPEN_ACC_BTN = (By.XPATH, '//input[@value="Open New Account"]')
+    OPEN_ACC_BTN = (By.XPATH, '//input[@class="button"]')
     NEW_ACC_ID = (By.XPATH, '//a[@id="newAccountId"]')
     HOME_TRANSITION = (By.XPATH, '//a[@text()="home"]')
     CUSTOMER_CARE_TRANSITION = (By.XPATH, '//a[text()="contact"]')
