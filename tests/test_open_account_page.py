@@ -1,5 +1,3 @@
-import time
-
 from locators.open_account_locators import OpenAccountLocators
 from locators.register_locators import RegisterPageLocators
 from pages.open_account_page import OpenAccountPage
