@@ -13,4 +13,5 @@ class Person:
     social_security_num: str = None
     username: str = None
     password: str = None
+    email: str = None
     

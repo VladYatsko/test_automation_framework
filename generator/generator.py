@@ -1,5 +1,4 @@
 from faker import Faker
-
 from data.data import Person
 
 faker_en = Faker('en-US')
@@ -17,5 +16,6 @@ def generated_data():
         phone_number=faker_en.phone_number(),
         social_security_num=faker_en.ssn(),
         username=faker_en.user_name(),
-        password=faker_en.password()
+        password=faker_en.password(),
+        email=faker_en.email()
     )

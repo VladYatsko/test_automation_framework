@@ -11,5 +11,5 @@ class CustomerCarePageLocators:
     HOME_TRANSITION = (By.XPATH, '//a[@text()="home"]')
     REGISTER_TRANSITION = (By.XPATH, '//a[text()="Register"]')
     ERROR_MESSAGE = (By.XPATH, '//span[@class="error"]')
-    SUCCESS_MESSAGE = (By.XPATH, '//p[text()="Thank you asd"]')
+    SUCCESS_MESSAGE = (By.XPATH, '//p[text()="A Customer Care Representative will be contacting you."]')
     
