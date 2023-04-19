@@ -2,6 +2,7 @@ from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
+from selenium.common import StaleElementReferenceException
 
 
 class BasePage:
@@ -9,7 +10,7 @@ class BasePage:
         self.driver = driver
         self.url = url
         self.wait = WebDriverWait(self.driver, timeout=10)
-        
+    
     def open_page(self) -> None:
         self.driver.get(self.url)
     
@@ -20,10 +21,16 @@ class BasePage:
         return self.driver.current_url
     
     def find_visible_element(self, locator: tuple) -> WebElement:
-        return self.wait.until(ec.visibility_of_element_located(locator))
+        try:
+            return self.wait.until(ec.visibility_of_element_located(locator))
+        except (ValueError, StaleElementReferenceException):
+            return self.wait.until(ec.visibility_of_element_located(locator))
     
     def find_visible_elements(self, locator: tuple) -> list:
-        return self.wait.until(ec.visibility_of_all_elements_located(locator))
+        try:
+            return self.wait.until(ec.visibility_of_all_elements_located(locator))
+        except (ValueError, StaleElementReferenceException):
+            return self.wait.until(ec.visibility_of_element_located(locator))
     
     def get_text(self, locator: tuple) -> str:
         return self.wait.until(ec.presence_of_element_located(locator)).text
@@ -47,6 +54,11 @@ class BasePage:
         alert_unit.accept()
         self.driver.switch_to.default_context()
         
+    def shift_from_element(self):
+        action = ActionChains(self.driver)
+        action.key_down(Keys.TAB).perform()
+        action.key_up(Keys.TAB).perform()
+    
     def refresh_page(self) -> None:
         return self.driver.refresh()
     
@@ -55,4 +67,3 @@ class BasePage:
     
     def move_forward(self) -> None:
         return self.driver.forward()
-    

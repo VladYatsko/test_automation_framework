@@ -58,6 +58,7 @@ class TestBillPage:
         register_page.register_page_is_expected()
         register_page.full_register()
         account_overview = AccountOverviewPage(driver, AccountOverviewLocators.URL)
+        account_overview.open_page()
         old_balance = float(account_overview.get_balance())
         account_overview.proceed_to_bill_pay()
         bill_pay_page = BillPayPage(driver, BillPayLocators.URL)
@@ -73,5 +74,7 @@ class TestBillPage:
         bill_pay_page.send_payment()
         bill_pay_page.is_successful()
         bill_pay_page.proceed_to_accounts_overview()
-        assert float(account_overview.get_balance()) == old_balance - float(amount_to_send)
+        account_overview.account_overview_page_is_expected()
+        new_balance = float(account_overview.get_balance())
+        assert new_balance == old_balance - float(amount_to_send)
     

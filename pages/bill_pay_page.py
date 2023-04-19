@@ -47,7 +47,8 @@ class BillPayPage(BasePage):
     
     def specify_amount(self):
         amount = random.randint(100, 1001)
-        return self.send_text(BillPayLocators.PHONE_NUM, str(amount))
+        self.send_text(BillPayLocators.AMOUNT, str(amount))
+        return amount
 
     def send_payment(self):
         self.click_element(BillPayLocators.SEND_PAYMENT_BTN)

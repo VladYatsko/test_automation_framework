@@ -18,12 +18,15 @@ class AccountOverviewPage(BasePage):
         self.find_visible_element(AccountOverviewLocators.ACCOUNT_ID).click()
         
     def get_balance(self):
+        time.sleep(1)
         return self.get_text(AccountOverviewLocators.BALANCE)[1:]
     
     def get_available_amount(self):
+        time.sleep(1)
         return self.get_text(AccountOverviewLocators.AVAILABLE_AMOUNT)[1:]
     
     def get_total(self):
+        time.sleep(1)
         return self.get_text(AccountOverviewLocators.TOTAL)[1:]
     
     def count_balance_sum(self):
