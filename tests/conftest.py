@@ -5,7 +5,10 @@ from selenium import webdriver
 
 @pytest.fixture
 def driver():
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+    options = webdriver.ChromeOptions()
+    options.add_argument("--disable-popup-blocking")
+    options.add_argument('--disable-save-password-bubble')
+    driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
     driver.maximize_window()
     yield driver
     driver.quit()

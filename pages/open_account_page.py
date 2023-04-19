@@ -1,5 +1,4 @@
 from selenium.webdriver import ActionChains
-
 from locators.open_account_locators import OpenAccountLocators
 from pages.base_page import BasePage
 from selenium.webdriver.support.ui import Select

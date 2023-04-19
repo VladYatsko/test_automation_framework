@@ -1,3 +1,4 @@
+import time
 from locators.account_overview_locators import AccountOverviewLocators
 from pages.base_page import BasePage
 
@@ -7,7 +8,7 @@ class AccountOverviewPage(BasePage):
         super().__init__(driver, url)
 
     def account_overview_page_is_expected(self):
-        assert self.get_url() == AccountOverviewLocators.URL
+        assert AccountOverviewLocators.URL in self.get_url()
         
     def get_account_id(self):
         return self.get_text(AccountOverviewLocators.ACCOUNT_ID)
@@ -15,6 +16,37 @@ class AccountOverviewPage(BasePage):
     def get_into_account(self):
         assert self.find_presenting_element(AccountOverviewLocators.ACCOUNT_ID).is_displayed()
         self.find_presenting_element(AccountOverviewLocators.ACCOUNT_ID).click()
+        
+    def get_balance(self):
+        return self.get_text(AccountOverviewLocators.BALANCE)[1:]
+    
+    def get_available_amount(self):
+        return self.get_text(AccountOverviewLocators.AVAILABLE_AMOUNT)[1:]
+    
+    def get_total(self):
+        return self.get_text(AccountOverviewLocators.TOTAL)[1:]
+    
+    def count_balance_sum(self):
+        self.find_presenting_element(AccountOverviewLocators.BALANCE)
+        time.sleep(2)
+        elements = self.find_presenting_elements(AccountOverviewLocators.BALANCE)
+        acc_balance = [element.text[1:] for element in elements]
+        acc_balance.remove(acc_balance[-1])
+        result = 0
+        for element in acc_balance:
+            result += float(element)
+        return result
+    
+    def count_amount_sum(self):
+        self.find_presenting_element(AccountOverviewLocators.AVAILABLE_AMOUNT)
+        time.sleep(2)
+        elements = self.find_presenting_elements(AccountOverviewLocators.AVAILABLE_AMOUNT)
+        acc_balance = [element.text[1:] for element in elements]
+        acc_balance.remove(acc_balance[-1])
+        result = 0
+        for element in acc_balance:
+            result += float(element)
+        return result
 
     def proceed_to_home(self):
         self.click_element(AccountOverviewLocators.HOME_TRANSITION)

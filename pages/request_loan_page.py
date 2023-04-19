@@ -1,3 +1,5 @@
+import random
+
 from locators.request_loan_locators import RequestLoanLocators
 from pages.base_page import BasePage
 from selenium.webdriver.support.ui import Select
@@ -11,10 +13,10 @@ class RequestLoanPage(BasePage):
         assert self.get_url() == RequestLoanLocators.URL
     
     def input_loan_amount(self):
-        return self.send_text(RequestLoanLocators.LOAN_AMOUNT, '100')
+        return self.send_text(RequestLoanLocators.LOAN_AMOUNT, str(random.randint(1, 10000)))
     
     def input_down_payment(self):
-        return self.send_text(RequestLoanLocators.DOWN_PAYMENT, '100')
+        return self.send_text(RequestLoanLocators.DOWN_PAYMENT, str(random.randint(1, 10000)))
     
     def select_from_which_account(self):
         select = Select(self.driver.find_presenting_element(RequestLoanLocators.FROM_ACC_ID))

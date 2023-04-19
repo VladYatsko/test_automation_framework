@@ -8,16 +8,16 @@ class AccountActivityPage(BasePage):
     def __init__(self, driver, url):
         super().__init__(driver, url)
         
-    def get_acc_number(self):
+    def get_acc_number(self) -> str:
         return self.get_text(AccountActivityLocators.ACCOUNT_ID)
     
-    def get_acc_type(self):
+    def get_acc_type(self) -> str:
         return self.get_text(AccountActivityLocators.ACCOUNT_TYPE)
     
-    def get_balance(self):
+    def get_balance(self) -> str:
         return self.get_text(AccountActivityLocators.BALANCE)
     
-    def get_available(self):
+    def get_available(self) -> str:
         return self.get_text(AccountActivityLocators.AVAILABLE_FUNDS)
     
     def select_month(self, month):

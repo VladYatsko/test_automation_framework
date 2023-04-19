@@ -55,6 +55,19 @@ class RegisterPage(BasePage):
     def submit_register(self):
         self.click_element(RegisterPageLocators.REGISTER_BUTTON)
         
+    def full_register(self):
+        self.specify_first_name()
+        self.specify_last_name()
+        self.specify_address()
+        self.specify_city()
+        self.specify_state()
+        self.specify_zip_code()
+        self.specify_phone_number()
+        self.specify_ssn()
+        self.specify_user_name()
+        self.specify_password()
+        self.submit_register()
+        
     def get_error_messages(self):
         return self.find_presenting_elements(RegisterPageLocators.ERROR_MESSAGE)
     

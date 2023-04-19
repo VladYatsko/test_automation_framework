@@ -14,10 +14,9 @@ class FindTransactionPage(BasePage):
     def select_account(self):
         select = Select(self.driver.find_presenting_element(FindTransactionLocators.SELECT_ACCOUNT))
         select.select_by_index(0)
-  
-# TODO: Implement TransactionID logic
-    def specify_transaction_id(self):
-        pass
+
+    def specify_transaction_id(self, transaction_id):
+        self.send_text(FindTransactionLocators.FIND_BY_DATE, transaction_id)
     
     def submit_by_transaction_id(self):
         self.click_element(FindTransactionLocators.FIND_BY_ID_BTN)

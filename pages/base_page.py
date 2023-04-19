@@ -28,8 +28,8 @@ class BasePage:
     def get_text(self, locator: tuple) -> str:
         return self.wait.until(ec.presence_of_element_located(locator)).text
     
-    def send_text(self, locator: tuple, value: str) -> str:
-        return self.wait.until(ec.element_to_be_clickable(locator)).send_keys(value)
+    def send_text(self, locator: tuple, value: str):
+        self.wait.until(ec.element_to_be_clickable(locator)).send_keys(value)
     
     def click_element(self, locator: tuple) -> None:
         return self.wait.until(ec.element_to_be_clickable(locator)).click()
