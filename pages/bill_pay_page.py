@@ -12,9 +12,9 @@ class BillPayPage(BasePage):
     def update_profile_page_is_expected(self):
         assert self.get_url() == BillPayLocators.URL
         
-    def select_another_account(self):
+    def select_another_account(self, index):
         select = Select(self.driver.find_element(*BillPayLocators.FROM_ACCOUNT))
-        select.select_by_index(1)
+        select.select_by_index(index)
 
     def specify_first_name(self):
         created_data = next(generated_data())

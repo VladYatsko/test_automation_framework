@@ -12,6 +12,12 @@ class AccountOverviewPage(BasePage):
         
     def get_account_id(self):
         return self.get_text(AccountOverviewLocators.ACCOUNT_ID)
+    
+    def get_into_account_by_index(self, index):
+        time.sleep(1)
+        account_array = self.find_visible_elements(AccountOverviewLocators.ACCOUNT_ID)
+        element = account_array[index]
+        element.click()
         
     def get_into_account(self):
         assert self.find_visible_element(AccountOverviewLocators.ACCOUNT_ID).is_displayed()
@@ -19,15 +25,25 @@ class AccountOverviewPage(BasePage):
         
     def get_balance(self):
         time.sleep(1)
-        return self.get_text(AccountOverviewLocators.BALANCE)[1:]
+        balance = self.get_text(AccountOverviewLocators.BALANCE).replace("$", "")
+        return balance
+        
+    def get_balance_by_index(self, index: int):
+        time.sleep(1)
+        account_ids = [element.text for element in self.find_visible_elements(AccountOverviewLocators.BALANCE)]
+        account_ids.remove(account_ids[-1])
+        balance = str(account_ids[index]).replace("$", "")
+        return balance
     
     def get_available_amount(self):
         time.sleep(1)
-        return self.get_text(AccountOverviewLocators.AVAILABLE_AMOUNT)[1:]
+        amount = self.get_text(AccountOverviewLocators.AVAILABLE_AMOUNT).replace("$", "")
+        return amount
     
     def get_total(self):
         time.sleep(1)
-        return self.get_text(AccountOverviewLocators.TOTAL)[1:]
+        total = self.get_text(AccountOverviewLocators.TOTAL).replace("$", "")
+        return total
     
     def count_balance_sum(self):
         self.find_visible_element(AccountOverviewLocators.BALANCE)
