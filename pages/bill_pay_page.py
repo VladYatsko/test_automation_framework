@@ -2,6 +2,7 @@ import random
 from generator.generator import generated_data
 from locators.bill_pay_locators import BillPayLocators
 from pages.base_page import BasePage
+from selenium.webdriver.support.ui import Select
 
 
 class BillPayPage(BasePage):
@@ -10,6 +11,10 @@ class BillPayPage(BasePage):
 
     def update_profile_page_is_expected(self):
         assert self.get_url() == BillPayLocators.URL
+        
+    def select_another_account(self):
+        select = Select(self.driver.find_element(*BillPayLocators.FROM_ACCOUNT))
+        select.select_by_index(1)
 
     def specify_first_name(self):
         created_data = next(generated_data())
@@ -41,19 +46,19 @@ class BillPayPage(BasePage):
         self.send_text(BillPayLocators.VERIFY_ACC_NUM, str(acc_number))
     
     def specify_amount(self):
-        amount = random.randint(10000, 100000)
+        amount = random.randint(100, 1001)
         return self.send_text(BillPayLocators.PHONE_NUM, str(amount))
 
     def send_payment(self):
         self.click_element(BillPayLocators.SEND_PAYMENT_BTN)
 
     def is_successful(self):
-        assert self.find_presenting_element(BillPayLocators.SUCCESS_PAYEE).is_displayed() is True
-        assert self.find_presenting_element(BillPayLocators.SUCCESS_AMOUNT).is_displayed() is True
-        assert self.find_presenting_element(BillPayLocators.SUCCESS_ACC_ID).is_displayed() is True
+        assert self.find_visible_element(BillPayLocators.SUCCESS_PAYEE).is_displayed() is True
+        assert self.find_visible_element(BillPayLocators.SUCCESS_AMOUNT).is_displayed() is True
+        assert self.find_visible_element(BillPayLocators.SUCCESS_ACC_ID).is_displayed() is True
 
     def is_not_successful(self):
-        assert self.find_presenting_element(BillPayLocators.ERROR_MSG).is_displayed() is True
+        assert self.find_visible_element(BillPayLocators.ERROR_MSG).is_displayed() is True
 
     def proceed_to_home(self):
         self.click_element(BillPayLocators.HOME_TRANSITION)

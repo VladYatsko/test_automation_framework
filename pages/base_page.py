@@ -19,11 +19,11 @@ class BasePage:
     def get_url(self) -> str:
         return self.driver.current_url
     
-    def find_presenting_element(self, locator: tuple) -> WebElement:
-        return self.wait.until(ec.presence_of_element_located(locator))
+    def find_visible_element(self, locator: tuple) -> WebElement:
+        return self.wait.until(ec.visibility_of_element_located(locator))
     
-    def find_presenting_elements(self, locator: tuple) -> list:
-        return self.wait.until(ec.presence_of_all_elements_located(locator))
+    def find_visible_elements(self, locator: tuple) -> list:
+        return self.wait.until(ec.visibility_of_all_elements_located(locator))
     
     def get_text(self, locator: tuple) -> str:
         return self.wait.until(ec.presence_of_element_located(locator)).text

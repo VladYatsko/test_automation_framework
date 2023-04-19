@@ -35,8 +35,8 @@ class CustomerCarePage(BasePage):
         self.click_element(CustomerCarePageLocators.REGISTER_TRANSITION)
         
     def review_error_message(self):
-        return self.find_presenting_element(CustomerCarePageLocators.ERROR_MESSAGE)
+        return self.find_visible_element(CustomerCarePageLocators.ERROR_MESSAGE)
     
     def review_success_message(self):
-        return self.find_presenting_element(CustomerCarePageLocators.SUCCESS_MESSAGE)
+        return self.find_visible_element(CustomerCarePageLocators.SUCCESS_MESSAGE)
     

@@ -16,7 +16,7 @@ class TestAccountOverviewPage:
         register_page.full_register()
         account_overview = AccountOverviewPage(driver, AccountOverviewLocators.URL)
         account_overview.open_page()
-        assert account_overview.find_presenting_element(AccountOverviewLocators.ACCOUNT_ID).is_displayed() is True
+        assert account_overview.find_visible_element(AccountOverviewLocators.ACCOUNT_ID).is_displayed() is True
     
     def test_new_account_is_displayed(self, driver):
         register_page = RegisterPage(driver, RegisterPageLocators.URL)
@@ -28,7 +28,7 @@ class TestAccountOverviewPage:
         open_account.submit_creation()
         account_overview = AccountOverviewPage(driver, AccountOverviewLocators.URL)
         account_overview.open_page()
-        assert len(account_overview.find_presenting_elements(AccountOverviewLocators.ACCOUNT_ID)) == 2
+        assert len(account_overview.find_visible_elements(AccountOverviewLocators.ACCOUNT_ID)) == 2
     
     def test_sum_of_balance(self, driver):
         register_page = RegisterPage(driver, RegisterPageLocators.URL)

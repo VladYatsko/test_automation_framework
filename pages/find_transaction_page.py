@@ -12,7 +12,7 @@ class FindTransactionPage(BasePage):
         assert self.get_url() == FindTransactionLocators.URL
         
     def select_account(self):
-        select = Select(self.driver.find_presenting_element(FindTransactionLocators.SELECT_ACCOUNT))
+        select = Select(self.driver.find_visible_element(FindTransactionLocators.SELECT_ACCOUNT))
         select.select_by_index(0)
 
     def specify_transaction_id(self, transaction_id):
@@ -43,7 +43,7 @@ class FindTransactionPage(BasePage):
         self.click_element(FindTransactionLocators.AMOUNT_SEARCH_BTN)
         
     def is_successful(self):
-        assert self.find_presenting_element(FindTransactionLocators.IS_SUCCESSFUL).is_displayed() is True
+        assert self.find_visible_element(FindTransactionLocators.IS_SUCCESSFUL).is_displayed() is True
     
     def proceed_to_home(self):
         self.click_element(FindTransactionLocators.HOME_TRANSITION)

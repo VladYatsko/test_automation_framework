@@ -14,8 +14,8 @@ class AccountOverviewPage(BasePage):
         return self.get_text(AccountOverviewLocators.ACCOUNT_ID)
         
     def get_into_account(self):
-        assert self.find_presenting_element(AccountOverviewLocators.ACCOUNT_ID).is_displayed()
-        self.find_presenting_element(AccountOverviewLocators.ACCOUNT_ID).click()
+        assert self.find_visible_element(AccountOverviewLocators.ACCOUNT_ID).is_displayed()
+        self.find_visible_element(AccountOverviewLocators.ACCOUNT_ID).click()
         
     def get_balance(self):
         return self.get_text(AccountOverviewLocators.BALANCE)[1:]
@@ -27,9 +27,9 @@ class AccountOverviewPage(BasePage):
         return self.get_text(AccountOverviewLocators.TOTAL)[1:]
     
     def count_balance_sum(self):
-        self.find_presenting_element(AccountOverviewLocators.BALANCE)
+        self.find_visible_element(AccountOverviewLocators.BALANCE)
         time.sleep(2)
-        elements = self.find_presenting_elements(AccountOverviewLocators.BALANCE)
+        elements = self.find_visible_elements(AccountOverviewLocators.BALANCE)
         acc_balance = [element.text[1:] for element in elements]
         acc_balance.remove(acc_balance[-1])
         result = 0
@@ -38,9 +38,9 @@ class AccountOverviewPage(BasePage):
         return result
     
     def count_amount_sum(self):
-        self.find_presenting_element(AccountOverviewLocators.AVAILABLE_AMOUNT)
+        self.find_visible_element(AccountOverviewLocators.AVAILABLE_AMOUNT)
         time.sleep(2)
-        elements = self.find_presenting_elements(AccountOverviewLocators.AVAILABLE_AMOUNT)
+        elements = self.find_visible_elements(AccountOverviewLocators.AVAILABLE_AMOUNT)
         acc_balance = [element.text[1:] for element in elements]
         acc_balance.remove(acc_balance[-1])
         result = 0

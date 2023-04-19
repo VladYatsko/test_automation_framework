@@ -69,10 +69,10 @@ class RegisterPage(BasePage):
         self.submit_register()
         
     def get_error_messages(self):
-        return self.find_presenting_elements(RegisterPageLocators.ERROR_MESSAGE)
+        return self.find_visible_elements(RegisterPageLocators.ERROR_MESSAGE)
     
     def get_error_message(self):
-        return self.find_presenting_element(RegisterPageLocators.ERROR_MESSAGE)
+        return self.find_visible_element(RegisterPageLocators.ERROR_MESSAGE)
     
     def proceed_to_home(self):
         self.click_element(RegisterPageLocators.HOME_TRANSITION)

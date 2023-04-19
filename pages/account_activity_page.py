@@ -21,11 +21,11 @@ class AccountActivityPage(BasePage):
         return self.get_text(AccountActivityLocators.AVAILABLE_FUNDS)
     
     def select_month(self, month):
-        select = Select(self.driver.find_presenting_element(AccountActivityLocators.ACTIVITY_PERIOD))
+        select = Select(self.driver.find_visible_element(AccountActivityLocators.ACTIVITY_PERIOD))
         select.select_by_value(month)
         
     def select_type(self, activity_type):
-        select = Select(self.driver.find_presenting_element(AccountActivityLocators.TYPE))
+        select = Select(self.driver.find_visible_element(AccountActivityLocators.TYPE))
         select.select_by_value(activity_type)
         
     def search_for_activity(self):

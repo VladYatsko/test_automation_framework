@@ -1,3 +1,4 @@
+import random
 from selenium.webdriver import ActionChains
 from locators.open_account_locators import OpenAccountLocators
 from pages.base_page import BasePage
@@ -25,11 +26,11 @@ class OpenAccountPage(BasePage):
         
     def submit_creation(self):
         action = ActionChains(self.driver)
-        action.move_to_element(self.find_presenting_element(OpenAccountLocators.OPEN_ACC_BTN)).perform()
+        action.move_to_element(self.find_visible_element(OpenAccountLocators.OPEN_ACC_BTN)).perform()
         self.click_element(OpenAccountLocators.OPEN_ACC_BTN)
         
     def get_new_account_id(self):
-        return self.find_presenting_element(OpenAccountLocators.NEW_ACC_ID)
+        return self.find_visible_element(OpenAccountLocators.NEW_ACC_ID).text
     
     def proceed_to_home(self):
         self.click_element(OpenAccountLocators.HOME_TRANSITION)

@@ -15,21 +15,21 @@ class TestHomePage:
         home_page.input_username()
         home_page.input_password()
         home_page.submit_login()
-        assert home_page.find_presenting_element(HomePageLocators.ERROR_MSG).is_displayed() is True
+        assert home_page.find_visible_element(HomePageLocators.ERROR_MSG).is_displayed() is True
         
     def test_login_without_password(self, driver):
         home_page = HomePage(driver, HomePageLocators.URL)
         home_page.open_page()
         home_page.input_username()
         home_page.submit_login()
-        assert home_page.find_presenting_element(HomePageLocators.ERROR_MSG).is_displayed() is True
+        assert home_page.find_visible_element(HomePageLocators.ERROR_MSG).is_displayed() is True
         
     def test_login_without_username(self, driver):
         home_page = HomePage(driver, HomePageLocators.URL)
         home_page.open_page()
         home_page.input_password()
         home_page.submit_login()
-        assert home_page.find_presenting_element(HomePageLocators.ERROR_MSG).is_displayed() is True
+        assert home_page.find_visible_element(HomePageLocators.ERROR_MSG).is_displayed() is True
     
     def test_redirection_between_pages(self, driver):
         home_page = HomePage(driver, HomePageLocators.URL)

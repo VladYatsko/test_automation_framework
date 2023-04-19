@@ -19,20 +19,20 @@ class RequestLoanPage(BasePage):
         return self.send_text(RequestLoanLocators.DOWN_PAYMENT, str(random.randint(1, 10000)))
     
     def select_from_which_account(self):
-        select = Select(self.driver.find_presenting_element(RequestLoanLocators.FROM_ACC_ID))
+        select = Select(self.driver.find_visible_element(RequestLoanLocators.FROM_ACC_ID))
         select.select_by_index(0)
         
     def apply_for_loan(self):
         self.click_element(RequestLoanLocators.APPLY_BUTTON)
         
     def is_approved(self):
-        assert self.find_presenting_element(RequestLoanLocators.APPROVED).is_displayed() is True
+        assert self.find_visible_element(RequestLoanLocators.APPROVED).is_displayed() is True
         
     def is_declined(self):
-        assert self.find_presenting_element(RequestLoanLocators.NOT_APPROVED).is_displayed() is True
+        assert self.find_visible_element(RequestLoanLocators.NOT_APPROVED).is_displayed() is True
         
     def get_new_account_id(self):
-        return self.find_presenting_element(RequestLoanLocators.NEW_ACCOUNT_ID).text
+        return self.find_visible_element(RequestLoanLocators.NEW_ACCOUNT_ID).text
 
     def proceed_to_home(self):
         self.click_element(RequestLoanLocators.HOME_TRANSITION)
