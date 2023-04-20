@@ -58,6 +58,10 @@ class BasePage:
         action = ActionChains(self.driver)
         action.key_down(Keys.TAB).perform()
         action.key_up(Keys.TAB).perform()
+        
+    def move_to_element_and_submit(self, locator):
+        action = ActionChains(self.driver)
+        action.move_to_element(self.find_visible_element(locator)).click().perform()
     
     def refresh_page(self) -> None:
         return self.driver.refresh()

@@ -14,7 +14,10 @@ class BillPayPage(BasePage):
         
     def select_another_account(self, index):
         select = Select(self.driver.find_element(*BillPayLocators.FROM_ACCOUNT))
-        select.select_by_index(index)
+        try:
+            select.select_by_index(index)
+        except IndexError:
+            select.select_by_index(0)
 
     def specify_first_name(self):
         created_data = next(generated_data())

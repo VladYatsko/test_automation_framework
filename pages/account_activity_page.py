@@ -1,5 +1,5 @@
+import time
 from locators.account_activity_locators import AccountActivityLocators
-from pages.account_overview_page import AccountOverviewPage
 from pages.base_page import BasePage
 from selenium.webdriver.support.ui import Select
 
@@ -15,24 +15,36 @@ class AccountActivityPage(BasePage):
         return self.get_text(AccountActivityLocators.ACCOUNT_TYPE)
     
     def get_balance(self) -> str:
-        return self.get_text(AccountActivityLocators.BALANCE)
+        balance = self.get_text(AccountActivityLocators.BALANCE).replace("$", "")
+        return balance
     
     def get_available(self) -> str:
-        return self.get_text(AccountActivityLocators.AVAILABLE_FUNDS)
+        available = self.get_text(AccountActivityLocators.AVAILABLE_FUNDS).replace("$", "")
+        return available
     
-    def select_month(self, month):
-        select = Select(self.driver.find_visible_element(AccountActivityLocators.ACTIVITY_PERIOD))
+    def select_month(self, month: str):
+        select = Select(self.driver.find_element(*AccountActivityLocators.ACTIVITY_PERIOD))
         select.select_by_value(month)
         
-    def select_type(self, activity_type):
-        select = Select(self.driver.find_visible_element(AccountActivityLocators.TYPE))
-        select.select_by_value(activity_type)
+    def select_type(self, index: int):
+        select = Select(self.driver.find_element(*AccountActivityLocators.TYPE))
+        select.select_by_index(index)
         
     def search_for_activity(self):
         self.click_element(AccountActivityLocators.GO_BUTTON)
         
     def select_activity(self):
         self.click_element(AccountActivityLocators.TRANSACTION_ID)
+        
+    def select_activity_by_index(self, index: int):
+        time.sleep(1)
+        account_array = self.find_visible_elements(AccountActivityLocators.TRANSACTION_ID)
+        try:
+            element = account_array[index]
+            element.click()
+        except IndexError:
+            element = account_array[len(account_array) - 1]
+            element.click()
 
     def proceed_to_home(self):
         self.click_element(AccountActivityLocators.HOME_TRANSITION)

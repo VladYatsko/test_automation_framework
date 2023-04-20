@@ -30,7 +30,7 @@ class OpenAccountPage(BasePage):
         self.click_element(OpenAccountLocators.OPEN_ACC_BTN)
         
     def get_new_account_id(self):
-        return self.find_visible_element(OpenAccountLocators.NEW_ACC_ID).text
+        return self.find_visible_element(OpenAccountLocators.NEW_ACC_ID)
     
     def proceed_to_home(self):
         self.click_element(OpenAccountLocators.HOME_TRANSITION)

@@ -16,8 +16,12 @@ class AccountOverviewPage(BasePage):
     def get_into_account_by_index(self, index):
         time.sleep(1)
         account_array = self.find_visible_elements(AccountOverviewLocators.ACCOUNT_ID)
-        element = account_array[index]
-        element.click()
+        try:
+            element = account_array[index]
+            element.click()
+        except IndexError:
+            element = account_array[len(account_array)-1]
+            element.click()
         
     def get_into_account(self):
         assert self.find_visible_element(AccountOverviewLocators.ACCOUNT_ID).is_displayed()
@@ -32,8 +36,12 @@ class AccountOverviewPage(BasePage):
         time.sleep(1)
         account_ids = [element.text for element in self.find_visible_elements(AccountOverviewLocators.BALANCE)]
         account_ids.remove(account_ids[-1])
-        balance = str(account_ids[index]).replace("$", "")
-        return balance
+        try:
+            balance = str(account_ids[index]).replace("$", "")
+            return balance
+        except IndexError:
+            balance = str(account_ids[len(account_ids)-1]).replace("$", "")
+            return balance
     
     def get_available_amount(self):
         time.sleep(1)

@@ -11,6 +11,7 @@ class TransferFundsLocators:
     SUCCESS_TO_ACC = (By.XPATH, '//span[@id="toAccountId"]')
     SUCCESS_AMOUNT = (By.XPATH, '//span[@id="amount"]')
     ERROR_MSG = (By.XPATH, '//p[@class="error"]')
+    AMOUNT_ERROR = (By.XPATH, '//p[text()="The amount cannot be empty. "]')
     HOME_TRANSITION = (By.XPATH, '//a[@text()="home"]')
     CUSTOMER_CARE_TRANSITION = (By.XPATH, '//a[text()="contact"]')
     OPEN_ACCOUNT_TRANSITION = (By.XPATH, '//a[text()="Open New Account"]')

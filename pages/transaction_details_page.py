@@ -19,7 +19,8 @@ class TransactionDetailsPage(BasePage):
         return self.get_text(TransactionDetailsLocators.TYPE)
     
     def get_amount(self):
-        return self.get_text(TransactionDetailsLocators.AMOUNT)
+        amount = self.get_text(TransactionDetailsLocators.AMOUNT).replace("$", "")
+        return amount
 
     def proceed_to_home(self):
         self.click_element(TransactionDetailsLocators.HOME_TRANSITION)

@@ -13,13 +13,21 @@ class TransferFundsPage(BasePage):
     def specify_amount(self, value):
         self.send_text(TransferFundsLocators.AMOUNT, value)
         
-    def select_from_account(self):
-        select = Select(self.driver.find_visible_element(TransferFundsLocators.FROM_ACCOUNT))
-        select.select_by_index(0)
+    def select_from_account(self, index):
+        try:
+            select = Select(self.driver.find_element(*TransferFundsLocators.FROM_ACCOUNT))
+            select.select_by_index(index)
+        except IndexError:
+            select = Select(self.driver.find_element(*TransferFundsLocators.FROM_ACCOUNT))
+            select.select_by_index(0)
         
-    def select_to_account(self):
-        select = Select(self.driver.find_visible_element(TransferFundsLocators.TO_ACCOUNT))
-        select.select_by_index(0)
+    def select_to_account(self, index):
+        try:
+            select = Select(self.driver.find_element(*TransferFundsLocators.TO_ACCOUNT))
+            select.select_by_index(index)
+        except IndexError:
+            select = Select(self.driver.find_element(*TransferFundsLocators.FROM_ACCOUNT))
+            select.select_by_index(0)
         
     def submit_transfer(self):
         self.click_element(TransferFundsLocators.TRANSFER_BUTTON)
@@ -30,7 +38,7 @@ class TransferFundsPage(BasePage):
         assert self.find_visible_element(TransferFundsLocators.SUCCESS_AMOUNT).is_displayed() is True
         
     def is_not_successful(self):
-        assert self.find_visible_element(TransferFundsLocators.ERROR_MSG).is_displayed() is True
+        assert self.find_visible_element(TransferFundsLocators.AMOUNT_ERROR).is_displayed() is True
         
     def proceed_to_home(self):
         self.click_element(TransferFundsLocators.HOME_TRANSITION)
