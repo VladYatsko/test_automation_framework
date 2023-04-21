@@ -11,12 +11,16 @@ class FindTransactionPage(BasePage):
     def find_transaction_page_is_expected(self):
         assert self.get_url() == FindTransactionLocators.URL
         
-    def select_account(self):
-        select = Select(self.driver.find_visible_element(FindTransactionLocators.SELECT_ACCOUNT))
-        select.select_by_index(0)
+    def select_account_by_index(self, index):
+        try:
+            select = Select(self.driver.find_element(*FindTransactionLocators.SELECT_ACCOUNT))
+            select.select_by_index(index)
+        except IndexError:
+            select = Select(self.driver.find_element(*FindTransactionLocators.SELECT_ACCOUNT))
+            select.select_by_index(0)
 
     def specify_transaction_id(self, transaction_id):
-        self.send_text(FindTransactionLocators.FIND_BY_DATE, transaction_id)
+        self.send_text(FindTransactionLocators.TRANSACTION_ID, transaction_id)
     
     def submit_by_transaction_id(self):
         self.click_element(FindTransactionLocators.FIND_BY_ID_BTN)
@@ -44,6 +48,9 @@ class FindTransactionPage(BasePage):
         
     def is_successful(self):
         assert self.find_visible_element(FindTransactionLocators.IS_SUCCESSFUL).is_displayed() is True
+        
+    def is_not_successful(self):
+        assert self.find_visible_element(FindTransactionLocators.ERROR_MSG).is_displayed() is True
     
     def proceed_to_home(self):
         self.click_element(FindTransactionLocators.HOME_TRANSITION)

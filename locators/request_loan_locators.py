@@ -8,6 +8,7 @@ class RequestLoanLocators:
     FROM_ACC_ID = (By.XPATH, '//select[@id="fromAccountId"]')
     APPLY_BUTTON = (By.XPATH, '//input[@value="Apply Now"]')
     NOT_APPROVED = (By.XPATH, '//p[@class="error ng-scope"]')
+    ERROR_MSG = (By.XPATH, '//p[@class="error"]')
     APPROVED = (By.CSS_SELECTOR, 'div.ng-scope > p')
     NEW_ACCOUNT_ID = (By.XPATH, '//a[@id="newAccountId"]')
     HOME_TRANSITION = (By.XPATH, '//a[@text()="home"]')

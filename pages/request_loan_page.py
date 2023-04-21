@@ -1,5 +1,4 @@
 import random
-
 from locators.request_loan_locators import RequestLoanLocators
 from pages.base_page import BasePage
 from selenium.webdriver.support.ui import Select
@@ -12,15 +11,19 @@ class RequestLoanPage(BasePage):
     def request_loan_page_is_expected(self):
         assert self.get_url() == RequestLoanLocators.URL
     
-    def input_loan_amount(self):
-        return self.send_text(RequestLoanLocators.LOAN_AMOUNT, str(random.randint(1, 10000)))
+    def input_loan_amount(self, value):
+        return self.send_text(RequestLoanLocators.LOAN_AMOUNT, value)
     
-    def input_down_payment(self):
-        return self.send_text(RequestLoanLocators.DOWN_PAYMENT, str(random.randint(1, 10000)))
+    def input_down_payment(self, value):
+        return self.send_text(RequestLoanLocators.DOWN_PAYMENT, value)
     
-    def select_from_which_account(self):
-        select = Select(self.driver.find_visible_element(RequestLoanLocators.FROM_ACC_ID))
-        select.select_by_index(0)
+    def select_from_which_account(self, index):
+        try:
+            select = Select(self.driver.find_element(*RequestLoanLocators.FROM_ACC_ID))
+            select.select_by_index(index)
+        except IndexError:
+            select = Select(self.driver.find_element(*RequestLoanLocators.FROM_ACC_ID))
+            select.select_by_index(0)
         
     def apply_for_loan(self):
         self.click_element(RequestLoanLocators.APPLY_BUTTON)
@@ -30,6 +33,9 @@ class RequestLoanPage(BasePage):
         
     def is_declined(self):
         assert self.find_visible_element(RequestLoanLocators.NOT_APPROVED).is_displayed() is True
+        
+    def is_blocked(self):
+        assert self.find_visible_element(RequestLoanLocators.ERROR_MSG).is_displayed() is True
         
     def get_new_account_id(self):
         return self.find_visible_element(RequestLoanLocators.NEW_ACCOUNT_ID).text
