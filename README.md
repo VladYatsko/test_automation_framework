@@ -40,5 +40,5 @@ docker build . -t [image_name]
 ```
 Then you need to run a container with test runner:
 ```
-docker run -d -it --rm --name [container_name] 
+docker run -d -it --rm --name [container_name] [image_name]
 ```
