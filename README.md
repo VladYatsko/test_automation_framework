@@ -4,7 +4,7 @@
 Current framework was created to test functionality of https://parabank.parasoft.com/parabank/index.htm web application. Current framework was created using Python + Selenium. Due to some issue with server please note that applicable time to run tests is after 4 p.m. UTC/GMT+2.
 
 ## How to run tests:
-First of fll it's required to clone this repository using:
+First of all it's required to clone this repository using:
 ```git
 git clone https://github.com/VladYatsko/test_automation_framework.git
 ```
