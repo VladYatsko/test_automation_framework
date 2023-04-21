@@ -39,8 +39,6 @@ class TestUpdateProfile:
             update_profile.specify_state()
         with allure.step('Click zip code.'):
             update_profile.specify_zip_code()
-        # with allure.step('Click phone number.'):
-        #     update_profile.specify_phone_num()
         with allure.step('Click submit button.'):
             update_profile.shift_from_element()
             update_profile.shift_from_element()
