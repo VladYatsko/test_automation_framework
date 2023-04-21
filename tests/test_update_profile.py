@@ -43,6 +43,7 @@ class TestUpdateProfile:
             update_profile.shift_from_element()
             update_profile.shift_from_element()
             update_profile.submit_by_keyboard()
+            
         with allure.step('Validation that profile is successfully updated.'):
             update_profile.is_successful()
         
