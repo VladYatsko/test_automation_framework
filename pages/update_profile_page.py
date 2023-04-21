@@ -1,4 +1,3 @@
-from selenium.common import StaleElementReferenceException
 from generator.generator import generated_data
 from locators.update_profile_locators import UpdatedProfileLocators
 from pages.base_page import BasePage
@@ -14,63 +13,56 @@ class UpdateProfilePage(BasePage):
     def specify_first_name(self):
         created_data = next(generated_data())
         try:
-            self.find_visible_element(UpdatedProfileLocators.FIRST_NAME).clear()
             return self.send_text(UpdatedProfileLocators.FIRST_NAME, created_data.first_name)
-        except StaleElementReferenceException:
+        except ValueError:
             self.find_visible_element(UpdatedProfileLocators.FIRST_NAME)
             return self.send_text(UpdatedProfileLocators.FIRST_NAME, created_data.first_name)
     
     def specify_last_name(self):
         created_data = next(generated_data())
         try:
-            self.find_visible_element(UpdatedProfileLocators.LAST_NAME).clear()
             return self.send_text(UpdatedProfileLocators.LAST_NAME, created_data.last_name)
-        except StaleElementReferenceException:
+        except ValueError:
             self.find_visible_element(UpdatedProfileLocators.LAST_NAME)
             return self.send_text(UpdatedProfileLocators.LAST_NAME, created_data.last_name)
     
     def specify_address(self):
         created_data = next(generated_data())
         try:
-            self.find_visible_element(UpdatedProfileLocators.ADDRESS).clear()
             return self.send_text(UpdatedProfileLocators.ADDRESS, created_data.address)
-        except StaleElementReferenceException:
+        except ValueError:
             self.find_visible_element(UpdatedProfileLocators.ADDRESS)
             return self.send_text(UpdatedProfileLocators.ADDRESS, created_data.address)
     
     def specify_city(self):
         created_data = next(generated_data())
         try:
-            self.find_visible_element(UpdatedProfileLocators.CITY).clear()
             return self.send_text(UpdatedProfileLocators.CITY, created_data.city)
-        except StaleElementReferenceException:
+        except ValueError:
             self.find_visible_element(UpdatedProfileLocators.CITY)
             return self.send_text(UpdatedProfileLocators.CITY, created_data.city)
     
     def specify_state(self):
         created_data = next(generated_data())
         try:
-            self.find_visible_element(UpdatedProfileLocators.STATE).clear()
             return self.send_text(UpdatedProfileLocators.STATE, created_data.state)
-        except StaleElementReferenceException:
+        except ValueError:
             self.find_visible_element(UpdatedProfileLocators.STATE)
             return self.send_text(UpdatedProfileLocators.STATE, created_data.state)
     
     def specify_zip_code(self):
         created_data = next(generated_data())
         try:
-            self.find_visible_element(UpdatedProfileLocators.ZIP_CODE).clear()
             return self.send_text(UpdatedProfileLocators.ZIP_CODE, created_data.zip_code)
-        except StaleElementReferenceException:
+        except ValueError:
             self.find_visible_element(UpdatedProfileLocators.ZIP_CODE)
             return self.send_text(UpdatedProfileLocators.ZIP_CODE, created_data.zip_code)
     
     def specify_phone_num(self):
         created_data = next(generated_data())
         try:
-            self.find_visible_element(UpdatedProfileLocators.PHONE_NUM).clear()
             return self.send_text(UpdatedProfileLocators.PHONE_NUM, created_data.phone_number)
-        except StaleElementReferenceException:
+        except ValueError:
             self.find_visible_element(UpdatedProfileLocators.PHONE_NUM)
             return self.send_text(UpdatedProfileLocators.PHONE_NUM, created_data.phone_number)
     

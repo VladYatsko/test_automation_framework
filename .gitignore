@@ -130,3 +130,8 @@ dmypy.json
 
 .idea
 .idea/
+
+# Allure Report service data.
+results/
+/results/
+results

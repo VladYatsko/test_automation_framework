@@ -2,7 +2,6 @@ from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
-from selenium.common import StaleElementReferenceException
 
 
 class BasePage:
@@ -23,13 +22,13 @@ class BasePage:
     def find_visible_element(self, locator: tuple) -> WebElement:
         try:
             return self.wait.until(ec.visibility_of_element_located(locator))
-        except (ValueError, StaleElementReferenceException):
+        except ValueError:
             return self.wait.until(ec.visibility_of_element_located(locator))
     
     def find_visible_elements(self, locator: tuple) -> list:
         try:
             return self.wait.until(ec.visibility_of_all_elements_located(locator))
-        except (ValueError, StaleElementReferenceException):
+        except ValueError:
             return self.wait.until(ec.visibility_of_element_located(locator))
     
     def get_text(self, locator: tuple) -> str:
@@ -58,6 +57,11 @@ class BasePage:
         action = ActionChains(self.driver)
         action.key_down(Keys.TAB).perform()
         action.key_up(Keys.TAB).perform()
+        
+    def submit_by_keyboard(self):
+        action = ActionChains(self.driver)
+        action.key_down(Keys.ENTER).perform()
+        action.key_up(Keys.ENTER).perform()
         
     def move_to_element_and_submit(self, locator):
         action = ActionChains(self.driver)

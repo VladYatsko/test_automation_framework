@@ -1,4 +1,3 @@
-import random
 from locators.request_loan_locators import RequestLoanLocators
 from pages.base_page import BasePage
 from selenium.webdriver.support.ui import Select
