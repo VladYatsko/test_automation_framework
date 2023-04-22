@@ -4,4 +4,4 @@ WORKDIR /app
 COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
 RUN chmod +x test_runner.sh
-CMD ["bash", "./test_runner.sh"]
+CMD ["pytest", "--reruns 5 ./tests/"]
