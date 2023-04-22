@@ -16,8 +16,8 @@ def setup_chrome_options():
         
 
 @pytest.fixture
-def driver(setup_options):
-    options = setup_options
+def driver(setup_chrome_options):
+    options = setup_chrome_options
     driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
     driver.maximize_window()
     yield driver
