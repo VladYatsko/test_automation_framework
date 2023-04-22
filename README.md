@@ -33,12 +33,11 @@ chmod +x ./test_runner.sh
 Then execute file with similar snippet as for Windows OS.
 
 ## How to run from Docker:
-Please note that API tests are not implemented yet, but when they will be implemented you will have a possibility to run API tests from Docker.
-To perform this action you will need to create your image first from existing Dockerfile:
+Current tests can be executed from docker in headless mode. To perform it you need to create your own image with running:
 ```
 docker build . -t [image_name]
 ```
 Then you need to run a container with test runner:
 ```
-docker run -d -it --rm --name [container_name] [image_name]
+docker run --rm --name [container_name] [image_name]
 ```
