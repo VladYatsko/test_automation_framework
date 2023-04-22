@@ -56,25 +56,9 @@ class TestAccountActivity:
             open_account.open_account_page_is_expected()
         with allure.step('Proceed to bill pay page.'):
             open_account.proceed_to_bill_pay()
-        with allure.step('Specify payee name.'):
+        with allure.step('Specify all the fields ans submit payment.'):
             bill_pay_page = BillPayPage(driver, BillPayLocators.URL)
-            bill_pay_page.specify_first_name()
-        with allure.step('Specify address.'):
-            bill_pay_page.specify_address()
-        with allure.step('Specify city.'):
-            bill_pay_page.specify_city()
-        with allure.step('Specify state.'):
-            bill_pay_page.specify_state()
-        with allure.step('Specify zip code.'):
-            bill_pay_page.specify_zip_code()
-        with allure.step('Specify phone number.'):
-            bill_pay_page.specify_phone_num()
-        with allure.step('Specify account and verify it.'):
-            bill_pay_page.specify_account_and_verify()
-        with allure.step('Specify amount.'):
-            bill_pay_page.specify_amount()
-        with allure.step('Click Send Payment button.'):
-            bill_pay_page.send_payment()
+            bill_pay_page.specify_all_the_fields_and_submit()
         with allure.step('Validation that payment is successful.'):
             bill_pay_page.is_successful()
         with allure.step('Proceed to accounts overview page.'):
@@ -108,25 +92,9 @@ class TestAccountActivity:
             open_account.open_account_page_is_expected()
         with allure.step('Proceed to bill pay page.'):
             open_account.proceed_to_bill_pay()
-        with allure.step('Specify payee name.'):
+        with allure.step('Specify all the fields and submit payment.'):
             bill_pay_page = BillPayPage(driver, BillPayLocators.URL)
-            bill_pay_page.specify_first_name()
-        with allure.step('Specify address.'):
-            bill_pay_page.specify_address()
-        with allure.step('Specify city.'):
-            bill_pay_page.specify_city()
-        with allure.step('Specify state.'):
-            bill_pay_page.specify_state()
-        with allure.step('Specify zip code.'):
-            bill_pay_page.specify_zip_code()
-        with allure.step('Specify phone number.'):
-            bill_pay_page.specify_phone_num()
-        with allure.step('Specify account and verify it.'):
-            bill_pay_page.specify_account_and_verify()
-        with allure.step('Specify amount.'):
-            bill_pay_page.specify_amount()
-        with allure.step('Click Send Payment button.'):
-            bill_pay_page.send_payment()
+            bill_pay_page.specify_all_the_fields_and_submit()
         with allure.step('Validation that payment is successful.'):
             bill_pay_page.is_successful()
         with allure.step('Proceed to accounts overview page.'):
@@ -151,7 +119,7 @@ class TestAccountActivity:
             register_page.open_page()
         with allure.step('Validation that registration page is opened.'):
             register_page.register_page_is_expected()
-        with allure.step('Specify all the fields and click submit button.'):
+        with allure.step('Specify all the fields and click register button.'):
             register_page.full_register()
         with allure.step('Proceed to open account page.'):
             open_account = OpenAccountPage(driver, OpenAccountLocators.URL)
@@ -160,25 +128,9 @@ class TestAccountActivity:
             open_account.open_account_page_is_expected()
         with allure.step('Proceed to bill pay page.'):
             open_account.proceed_to_bill_pay()
-        with allure.step('Specify payee name.'):
+        with allure.step('Specify all the fields and submit.'):
             bill_pay_page = BillPayPage(driver, BillPayLocators.URL)
-            bill_pay_page.specify_first_name()
-        with allure.step('Specify address.'):
-            bill_pay_page.specify_address()
-        with allure.step('Specify city.'):
-            bill_pay_page.specify_city()
-        with allure.step('Specify state.'):
-            bill_pay_page.specify_state()
-        with allure.step('Specify zip code.'):
-            bill_pay_page.specify_zip_code()
-        with allure.step('Specify phone number.'):
-            bill_pay_page.specify_phone_num()
-        with allure.step('Specify account and verify it.'):
-            bill_pay_page.specify_account_and_verify()
-        with allure.step('Specify amount.'):
-            bill_pay_page.specify_amount()
-        with allure.step('Click Send Payment button.'):
-            bill_pay_page.send_payment()
+            bill_pay_page.specify_all_the_fields_and_submit()
         with allure.step('Validation that payment is successful.'):
             bill_pay_page.is_successful()
         with allure.step('Proceed to accounts overview page.'):

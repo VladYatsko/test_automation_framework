@@ -32,24 +32,8 @@ class TestFindTransaction:
         with allure.step('Proceed to bill pay page.'):
             account_overview.proceed_to_bill_pay()
             bill_pay_page = BillPayPage(driver, BillPayLocators.URL)
-        with allure.step('Specify payee name.'):
-            bill_pay_page.specify_first_name()
-        with allure.step('Specify address.'):
-            bill_pay_page.specify_address()
-        with allure.step('Specify city.'):
-            bill_pay_page.specify_city()
-        with allure.step('Specify state.'):
-            bill_pay_page.specify_state()
-        with allure.step('Specify zip code.'):
-            bill_pay_page.specify_zip_code()
-        with allure.step('Specify phone number.'):
-            bill_pay_page.specify_phone_num()
-        with allure.step('Specify account and verify it.'):
-            bill_pay_page.specify_account_and_verify()
-        with allure.step('Specify amount.'):
-            bill_pay_page.specify_amount()
-        with allure.step('Click send payment.'):
-            bill_pay_page.send_payment()
+        with allure.step('Specify all the fields and send payment.'):
+            bill_pay_page.specify_all_the_fields_and_submit()
         with allure.step('Validation that payment was successfully sent.'):
             bill_pay_page.is_successful()
         with allure.step('Proceed to account overview page.'):
@@ -140,25 +124,9 @@ class TestFindTransaction:
             account_overview.open_page()
         with allure.step('Proceed to bill pay.'):
             account_overview.proceed_to_bill_pay()
-        with allure.step('Specify payee name.'):
+        with allure.step('Specify all the fields and send payment.'):
             bill_pay_page = BillPayPage(driver, BillPayLocators.URL)
-            bill_pay_page.specify_first_name()
-        with allure.step('Specify address.'):
-            bill_pay_page.specify_address()
-        with allure.step('Specify city.'):
-            bill_pay_page.specify_city()
-        with allure.step('Specify state.'):
-            bill_pay_page.specify_state()
-        with allure.step('Specify zip code.'):
-            bill_pay_page.specify_zip_code()
-        with allure.step('Specify phone number.'):
-            bill_pay_page.specify_phone_num()
-        with allure.step('Specify account and verify it.'):
-            bill_pay_page.specify_account_and_verify()
-        with allure.step('Specify amount.'):
-            bill_pay_page.specify_amount()
-        with allure.step('Click Send button.'):
-            bill_pay_page.send_payment()
+            bill_pay_page.specify_all_the_fields_and_submit()
         with allure.step('Validation that payment is successful.'):
             bill_pay_page.is_successful()
         with allure.step('Proceed to find transaction page.'):
@@ -187,25 +155,9 @@ class TestFindTransaction:
             account_overview.open_page()
         with allure.step('Proceed to bill pay.'):
             account_overview.proceed_to_bill_pay()
-        with allure.step('Specify payee name.'):
+        with allure.step('Specify all the fields and submit payment.'):
             bill_pay_page = BillPayPage(driver, BillPayLocators.URL)
-            bill_pay_page.specify_first_name()
-        with allure.step('Specify address.'):
-            bill_pay_page.specify_address()
-        with allure.step('Specify city.'):
-            bill_pay_page.specify_city()
-        with allure.step('Specify state.'):
-            bill_pay_page.specify_state()
-        with allure.step('Specify zip code.'):
-            bill_pay_page.specify_zip_code()
-        with allure.step('Specify phone number.'):
-            bill_pay_page.specify_phone_num()
-        with allure.step('Specify account and verify it.'):
-            bill_pay_page.specify_account_and_verify()
-        with allure.step('Specify amount.'):
-            bill_pay_page.specify_amount()
-        with allure.step('Click Send button.'):
-            bill_pay_page.send_payment()
+            bill_pay_page.specify_all_the_fields_and_submit()
         with allure.step('Validation that payment is successful.'):
             bill_pay_page.is_successful()
         with allure.step('Proceed to find transaction page.'):

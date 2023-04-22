@@ -55,6 +55,17 @@ class BillPayPage(BasePage):
 
     def send_payment(self):
         self.click_element(BillPayLocators.SEND_PAYMENT_BTN)
+        
+    def specify_all_the_fields_and_submit(self):
+        self.specify_first_name()
+        self.specify_address()
+        self.specify_city()
+        self.specify_state()
+        self.specify_zip_code()
+        self.specify_phone_num()
+        self.specify_account_and_verify()
+        self.specify_amount()
+        self.send_payment()
 
     def is_successful(self):
         assert self.find_visible_element(BillPayLocators.SUCCESS_PAYEE).is_displayed() is True
