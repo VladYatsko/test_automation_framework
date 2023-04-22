@@ -13,12 +13,16 @@ def setup_chrome_options():
         options.add_argument('--no-sandbox')
         options.add_argument('--headless')
         options.add_argument('--disable-gpu')
-        
+    return options
+
 
 @pytest.fixture
 def driver(setup_chrome_options):
     options = setup_chrome_options
-    driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
+    if os.path.exists('/.dockerenv'):
+        driver = webdriver.Chrome(options=options)
+    else:
+        driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
     driver.maximize_window()
     yield driver
     driver.quit()
