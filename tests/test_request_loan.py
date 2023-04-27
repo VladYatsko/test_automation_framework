@@ -1,3 +1,4 @@
+import pytest
 import allure
 from locators.account_overview_locators import AccountOverviewLocators
 from locators.register_locators import RegisterPageLocators
