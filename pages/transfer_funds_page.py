@@ -1,3 +1,4 @@
+import allure
 from locators.transfer_funds_locators import TransferFundsLocators
 from pages.base_page import BasePage
 from selenium.webdriver.support.ui import Select
@@ -6,13 +7,16 @@ from selenium.webdriver.support.ui import Select
 class TransferFundsPage(BasePage):
     def __init__(self, driver, url):
         super().__init__(driver, url)
-
+    
+    @allure.step('Validation that transfer funds page is opened.')
     def transfer_funds_page_is_expected(self):
         assert self.get_url() == TransferFundsLocators.URL
-        
+    
+    @allure.step('Specify amount to transfer.')
     def specify_amount(self, value):
         self.send_text(TransferFundsLocators.AMOUNT, value)
-        
+    
+    @allure.step('Select from which account to send.')
     def select_from_account(self, index):
         try:
             select = Select(self.driver.find_element(*TransferFundsLocators.FROM_ACCOUNT))
@@ -20,7 +24,8 @@ class TransferFundsPage(BasePage):
         except IndexError:
             select = Select(self.driver.find_element(*TransferFundsLocators.FROM_ACCOUNT))
             select.select_by_index(0)
-        
+    
+    @allure.step('Select account to receive transfer.')
     def select_to_account(self, index):
         try:
             select = Select(self.driver.find_element(*TransferFundsLocators.TO_ACCOUNT))
@@ -28,15 +33,18 @@ class TransferFundsPage(BasePage):
         except IndexError:
             select = Select(self.driver.find_element(*TransferFundsLocators.FROM_ACCOUNT))
             select.select_by_index(0)
-        
+    
+    @allure.step('Click submit transfer button.')
     def submit_transfer(self):
         self.click_element(TransferFundsLocators.TRANSFER_BUTTON)
-        
+    
+    @allure.step('Validation that transfer is successful.')
     def is_successful(self):
         assert self.find_visible_element(TransferFundsLocators.SUCCESS_FROM_ACC).is_displayed() is True
         assert self.find_visible_element(TransferFundsLocators.SUCCESS_TO_ACC).is_displayed() is True
         assert self.find_visible_element(TransferFundsLocators.SUCCESS_AMOUNT).is_displayed() is True
-        
+    
+    @allure.step('Validation that transfer is not successful.')
     def is_not_successful(self):
         assert self.find_visible_element(TransferFundsLocators.AMOUNT_ERROR).is_displayed() is True
         

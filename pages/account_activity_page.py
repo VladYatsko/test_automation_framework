@@ -1,4 +1,5 @@
 import time
+import allure
 from locators.account_activity_locators import AccountActivityLocators
 from pages.base_page import BasePage
 from selenium.webdriver.support.ui import Select
@@ -7,35 +8,44 @@ from selenium.webdriver.support.ui import Select
 class AccountActivityPage(BasePage):
     def __init__(self, driver, url):
         super().__init__(driver, url)
-        
+    
+    @allure.step('Get account number.')
     def get_acc_number(self) -> str:
         return self.get_text(AccountActivityLocators.ACCOUNT_ID)
     
+    @allure.step('Get account type.')
     def get_acc_type(self) -> str:
         return self.get_text(AccountActivityLocators.ACCOUNT_TYPE)
     
+    @allure.step('Get actual balance.')
     def get_balance(self) -> str:
         balance = self.get_text(AccountActivityLocators.BALANCE).replace("$", "")
         return balance
     
+    @allure.step('Get available funds.')
     def get_available(self) -> str:
         available = self.get_text(AccountActivityLocators.AVAILABLE_FUNDS).replace("$", "")
         return available
     
+    @allure.step('Select month.')
     def select_month(self, month: str):
         select = Select(self.driver.find_element(*AccountActivityLocators.ACTIVITY_PERIOD))
         select.select_by_value(month)
-        
+    
+    @allure.step('Select account type.')
     def select_type(self, index: int):
         select = Select(self.driver.find_element(*AccountActivityLocators.TYPE))
         select.select_by_index(index)
-        
+    
+    @allure.step('Click search for activity button.')
     def search_for_activity(self):
         self.click_element(AccountActivityLocators.GO_BUTTON)
-        
+    
+    @allure.step('Click received activity.')
     def select_activity(self):
         self.click_element(AccountActivityLocators.TRANSACTION_ID)
-        
+    
+    @allure.step('Click activity from the list by index.')
     def select_activity_by_index(self, index: int):
         time.sleep(1)
         account_array = self.find_visible_elements(AccountActivityLocators.TRANSACTION_ID)

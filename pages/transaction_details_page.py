@@ -1,3 +1,4 @@
+import allure
 from locators.transaction_details_locators import TransactionDetailsLocators
 from pages.base_page import BasePage
 
@@ -5,19 +6,24 @@ from pages.base_page import BasePage
 class TransactionDetailsPage(BasePage):
     def __init__(self, driver, url):
         super().__init__(driver, url)
-        
+    
+    @allure.step('Get transaction ID.')
     def get_transaction_id(self):
         return self.get_text(TransactionDetailsLocators.TRANSACTION_ID)
     
+    @allure.step('Get date.')
     def get_date(self):
         return self.get_text(TransactionDetailsLocators.DATE)
     
+    @allure.step('Get description.')
     def get_description(self):
         return self.get_text(TransactionDetailsLocators.DESCRIPTION)
     
+    @allure.step('Get type.')
     def get_type(self):
         return self.get_text(TransactionDetailsLocators.TYPE)
     
+    @allure.step('Get amount.')
     def get_amount(self):
         amount = self.get_text(TransactionDetailsLocators.AMOUNT).replace("$", "")
         return amount

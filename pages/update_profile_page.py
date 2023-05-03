@@ -1,3 +1,4 @@
+import allure
 from generator.generator import generated_data
 from locators.update_profile_locators import UpdatedProfileLocators
 from pages.base_page import BasePage
@@ -7,9 +8,11 @@ class UpdateProfilePage(BasePage):
     def __init__(self, driver, url):
         super().__init__(driver, url)
     
+    @allure.step('Validation that update profile page is opened.')
     def update_profile_page_is_expected(self):
         assert self.get_url() == UpdatedProfileLocators.URL
     
+    @allure.step('Specify first name.')
     def specify_first_name(self):
         created_data = next(generated_data())
         try:
@@ -18,6 +21,7 @@ class UpdateProfilePage(BasePage):
             self.find_visible_element(UpdatedProfileLocators.FIRST_NAME)
             return self.send_text(UpdatedProfileLocators.FIRST_NAME, created_data.first_name)
     
+    @allure.step('Specify last name.')
     def specify_last_name(self):
         created_data = next(generated_data())
         try:
@@ -26,6 +30,7 @@ class UpdateProfilePage(BasePage):
             self.find_visible_element(UpdatedProfileLocators.LAST_NAME)
             return self.send_text(UpdatedProfileLocators.LAST_NAME, created_data.last_name)
     
+    @allure.step('Specify address.')
     def specify_address(self):
         created_data = next(generated_data())
         try:
@@ -34,6 +39,7 @@ class UpdateProfilePage(BasePage):
             self.find_visible_element(UpdatedProfileLocators.ADDRESS)
             return self.send_text(UpdatedProfileLocators.ADDRESS, created_data.address)
     
+    @allure.step('Specify city.')
     def specify_city(self):
         created_data = next(generated_data())
         try:
@@ -42,6 +48,7 @@ class UpdateProfilePage(BasePage):
             self.find_visible_element(UpdatedProfileLocators.CITY)
             return self.send_text(UpdatedProfileLocators.CITY, created_data.city)
     
+    @allure.step('Specify state.')
     def specify_state(self):
         created_data = next(generated_data())
         try:
@@ -50,6 +57,7 @@ class UpdateProfilePage(BasePage):
             self.find_visible_element(UpdatedProfileLocators.STATE)
             return self.send_text(UpdatedProfileLocators.STATE, created_data.state)
     
+    @allure.step('Specify zip code.')
     def specify_zip_code(self):
         created_data = next(generated_data())
         try:
@@ -58,6 +66,7 @@ class UpdateProfilePage(BasePage):
             self.find_visible_element(UpdatedProfileLocators.ZIP_CODE)
             return self.send_text(UpdatedProfileLocators.ZIP_CODE, created_data.zip_code)
     
+    @allure.step('Specify phone number.')
     def specify_phone_num(self):
         created_data = next(generated_data())
         try:
@@ -66,12 +75,15 @@ class UpdateProfilePage(BasePage):
             self.find_visible_element(UpdatedProfileLocators.PHONE_NUM)
             return self.send_text(UpdatedProfileLocators.PHONE_NUM, created_data.phone_number)
     
+    @allure.step('Specify register.')
     def submit_register(self):
         self.click_element(UpdatedProfileLocators.UPDATE_PROFILE_BTN)
     
+    @allure.step('Validation that profile is updated.')
     def is_successful(self):
         assert self.find_visible_element(UpdatedProfileLocators.SUCCESS_MSG).is_displayed()
     
+    @allure.step('Validation that profile was not updated.')
     def is_not_successful(self):
         assert self.find_visible_element(UpdatedProfileLocators.ERROR_MSG).is_displayed()
     
